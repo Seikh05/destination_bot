@@ -1,8 +1,26 @@
+<div align="center">
+
+<img src="images/cover.png" alt="destination_bot cover" width="100%"/>
+
 # 🤖 destination_bot — A* Path Planning on ROS2
 
 > A custom differential drive robot built from scratch in ROS2,
-> capable of mapping an environment using SLAM and finding the 
+> capable of mapping an environment using SLAM and finding the
 > shortest path between two points using the A* algorithm.
+
+![ROS2](https://img.shields.io/badge/ROS2-Humble-blue?logo=ros&logoColor=white)
+![Gazebo](https://img.shields.io/badge/Gazebo-11-orange?logo=gazebo)
+![Python](https://img.shields.io/badge/Python-3.10-green?logo=python&logoColor=white)
+![SLAM](https://img.shields.io/badge/SLAM-Toolbox-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Stars](https://img.shields.io/github/stars/Seikh05/destination_bot?style=social)
+
+</div>
+
+---
+
+> 📸 _Simulation running in Gazebo 11 — robot navigating
+> around obstacles using A* on a SLAM-generated map_
 
 ![Robot in Gazebo](images/gazebo_world.png)
 
