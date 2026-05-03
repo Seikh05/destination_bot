@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="obstacle_world">
+
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- North wall -->
+    <model name="wall_north"><static>true</static><pose>0 4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>10 0.1 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>10 0.1 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient></material></visual>
+      </link></model>
+
+    <!-- South wall -->
+    <model name="wall_south"><static>true</static><pose>0 -4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>10 0.1 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>10 0.1 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient></material></visual>
+      </link></model>
+
+    <!-- East wall -->
+    <model name="wall_east"><static>true</static><pose>5 0 0.5 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>8 0.1 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>8 0.1 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient></material></visual>
+      </link></model>
+
+    <!-- West wall -->
+    <model name="wall_west"><static>true</static><pose>-5 0 0.5 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>8 0.1 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>8 0.1 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient></material></visual>
+      </link></model>
+
+    <!-- Red box obstacle -->
+    <model name="box_1"><static>true</static><pose>2 1 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.5 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material><ambient>0.8 0.1 0.1 1</ambient></material></visual>
+      </link></model>
+
+    <!-- Blue tall box -->
+    <model name="box_2"><static>true</static><pose>-2 -1 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1.0 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1.0 0.5</size></box></geometry>
+          <material><ambient>0.1 0.3 0.8 1</ambient></material></visual>
+      </link></model>
+
+    <!-- Green cylinder -->
+    <model name="cylinder_1"><static>true</static><pose>1 -2 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><cylinder><radius>0.3</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.3</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.1 0.7 0.1 1</ambient></material></visual>
+      </link></model>
+
+    <!-- Orange diagonal wall -->
+    <model name="box_3"><static>true</static><pose>-1 2.5 0.25 0 0 0.785</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.4 1.5 0.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.4 1.5 0.5</size></box></geometry>
+          <material><ambient>0.9 0.5 0.1 1</ambient></material></visual>
+      </link></model>
+
+  </world>
+</sdf>

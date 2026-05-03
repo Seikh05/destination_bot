@@ -1,0 +1,15 @@
+# ROS2 build artifacts
+build/
+install/
+log/
+*.pyc
+__pycache__/
+
+# Map files (optional — remove these lines if you want to include maps)
+maps/*.pgm
+
+# VS Code
+.vscode/
+
+# Gazebo
+*.log

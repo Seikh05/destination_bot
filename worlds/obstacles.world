@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="simple_world">
+
+    <!-- ===== LIGHTING ===== -->
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- =====================================================
+         BOUNDARY WALLS  (10m x 10m arena)
+         Robot spawns at (0,0) — plenty of open space
+         ===================================================== -->
+
+    <!-- North wall -->
+    <model name="wall_north"><static>true</static>
+      <pose>0 5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>10.2 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>10.2 0.2 1.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- South wall -->
+    <model name="wall_south"><static>true</static>
+      <pose>0 -5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>10.2 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>10.2 0.2 1.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- East wall -->
+    <model name="wall_east"><static>true</static>
+      <pose>5 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.2 10.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.2 10.2 1.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- West wall -->
+    <model name="wall_west"><static>true</static>
+      <pose>-5 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.2 10.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.2 10.2 1.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- =====================================================
+         OBSTACLES — 8 total, well spaced
+         All have clear paths between them for A*
+         ===================================================== -->
+
+    <!-- Obstacle 1: Red box — top left area -->
+    <model name="obs_1"><static>true</static>
+      <pose>-3 3 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+          <material>
+            <ambient>0.9 0.1 0.1 1</ambient>
+            <diffuse>0.9 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 2: Blue box — top right area -->
+    <model name="obs_2"><static>true</static>
+      <pose>3 3 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+          <material>
+            <ambient>0.1 0.1 0.9 1</ambient>
+            <diffuse>0.1 0.1 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 3: Green cylinder — left side -->
+    <model name="obs_3"><static>true</static>
+      <pose>-3 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry>
+            <cylinder><radius>0.4</radius><length>1.0</length></cylinder>
+          </geometry>
+        </collision>
+        <visual name="v">
+          <geometry>
+            <cylinder><radius>0.4</radius><length>1.0</length></cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.8 0.1 1</ambient>
+            <diffuse>0.1 0.8 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 4: Orange cylinder — right side -->
+    <model name="obs_4"><static>true</static>
+      <pose>3 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry>
+            <cylinder><radius>0.4</radius><length>1.0</length></cylinder>
+          </geometry>
+        </collision>
+        <visual name="v">
+          <geometry>
+            <cylinder><radius>0.4</radius><length>1.0</length></cylinder>
+          </geometry>
+          <material>
+            <ambient>0.9 0.5 0.0 1</ambient>
+            <diffuse>0.9 0.5 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 5: Purple box — bottom left -->
+    <model name="obs_5"><static>true</static>
+      <pose>-3 -3 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+          <material>
+            <ambient>0.6 0.1 0.8 1</ambient>
+            <diffuse>0.6 0.1 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 6: Yellow box — bottom right -->
+    <model name="obs_6"><static>true</static>
+      <pose>3 -3 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+          <material>
+            <ambient>0.9 0.9 0.0 1</ambient>
+            <diffuse>0.9 0.9 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 7: White long wall — horizontal centre divider -->
+    <!-- Has a GAP on each side so A* can always find a path -->
+    <model name="obs_7"><static>true</static>
+      <pose>0 1.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><box><size>3.0 0.2 1.0</size></box></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>3.0 0.2 1.0</size></box></geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>0.9 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 8: Cyan cylinder — centre top -->
+    <model name="obs_8"><static>true</static>
+      <pose>0 -1.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry>
+            <cylinder><radius>0.35</radius><length>1.0</length></cylinder>
+          </geometry>
+        </collision>
+        <visual name="v">
+          <geometry>
+            <cylinder><radius>0.35</radius><length>1.0</length></cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.8 0.8 1</ambient>
+            <diffuse>0.0 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
